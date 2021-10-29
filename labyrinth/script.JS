@@ -171,7 +171,11 @@ class goalClass {
         if (player.x >= goal.goalX - 7.5 && player.x <= goal.goalX + goal.goalWidth + 7.5 &&
             player.y >= goal.goalY - 7.5 && player.y <= goal.goalY + goal.goalHeight + 7.5) {
                 this.createWinPic()
-                alert("You win!")
+                alert("Well Done!")
+                this.y = 625
+                this.playerDOM.style.top = this.y + 'px';
+                this.x = 1100
+                this.playerDOM.style.left = this.x + 'px';
         }
     }
 }
@@ -236,4 +240,3 @@ document.addEventListener('keydown', (pressed) =>{
         player.wallHit()
         goal.winGame()
 })
-
