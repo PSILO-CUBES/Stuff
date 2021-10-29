@@ -90,7 +90,7 @@ class playerClass {
             let VwallXInt = parseInt(VwallArray[i].wallX)
             if (this.x >= VwallXInt - 7.5 && this.x <= VwallXInt + VwallWidthInt + 7.5 &&
                 this.y >= VwallYInt - 7.5 && this.y <= VwallYInt + VwallHeightInt + 7.5) {
-                    this.y = 625
+                    this.y = 635
                     this.playerDOM.style.top = this.y + 'px';
                     this.x = 1100
                     this.playerDOM.style.left = this.x + 'px';
@@ -106,12 +106,26 @@ class playerClass {
             let HwallXInt = parseInt(HwallArray[i].wallX)
             if (this.x >= HwallXInt - 7.5 && this.x <= HwallXInt + HwallWidthInt + 7.5 &&
                 this.y >= HwallYInt - 7.5 && this.y <= HwallYInt + HwallHeightInt + 7.5) {
-                    this.y = 625
+                    this.y = 635
                     this.playerDOM.style.top = this.y + 'px';
                     this.x = 1100
                     this.playerDOM.style.left = this.x + 'px';
                     player.createPic()
             }
+        }
+    }
+
+    winGame() {
+        if (this.x >= goal.goalX - 7.5 && this.x <= goal.goalX + goal.goalWidth + 7.5 &&
+            this.y >= goal.goalY - 7.5 && this.y <= goal.goalY + goal.goalHeight + 7.5) {
+                goal.createWinPic()
+                alert("Well Done!")
+                this.y = 635
+                this.playerDOM.style.top = this.y + 'px';
+                this.x = 1100
+                this.playerDOM.style.left = this.x + 'px';
+                console.log(this.x)
+                console.log(this.y)
         }
     }
 }
@@ -165,18 +179,6 @@ class goalClass {
         this.winPicDom.style.zIndex = 3
         this.winPicDom.style.background = "url('Images/youwin.png')"
         document.getElementById("container").appendChild(this.winPicDom)
-    }
-
-    winGame(){
-        if (player.x >= goal.goalX - 7.5 && player.x <= goal.goalX + goal.goalWidth + 7.5 &&
-            player.y >= goal.goalY - 7.5 && player.y <= goal.goalY + goal.goalHeight + 7.5) {
-                this.createWinPic()
-                alert("Well Done!")
-                this.y = 625
-                this.playerDOM.style.top = this.y + 'px';
-                this.x = 1100
-                this.playerDOM.style.left = this.x + 'px';
-        }
     }
 }
 
@@ -238,5 +240,5 @@ const goal = new goalClass(325, 685, 10, 20)
 document.addEventListener('keydown', (pressed) =>{
         player.movePlayer(pressed)
         player.wallHit()
-        goal.winGame()
+        player.winGame()
 })
