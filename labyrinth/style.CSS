@@ -1,0 +1,43 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+
+    background: linear-gradient(to right, green,20%,rgb(0, 50, 0));
+
+    overflow: hidden;
+}
+
+.player {
+    position: absolute;
+
+    border-radius: 6.25px;
+
+    display: block;
+
+    transform: translate(-50%, -50%);
+}
+
+.pic {
+    position: absolute;
+}
+
+.winPic{
+    position: absolute;
+}
+
+.wall {
+    position: absolute;
+
+    background: black;
+}
+
+.goal {
+    position :absolute;
+
+    background: orangered;
+}
