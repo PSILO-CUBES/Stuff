@@ -1,3 +1,17 @@
+class containerClass {
+    constructor(){
+        this.containerDom = document.createElement('DIV')
+        this.createContrainer()
+    }
+    
+    createContrainer(){
+        this.containerDom.className = "container"
+        let bodyDom = document.getElementsByTagName('body')[0]
+        bodyDom.appendChild(this.containerDom)
+        console.log(this.containerDom)
+    }
+}
+
 class playerClass {
     constructor(height, width, color, x, y){
         this.height = height
@@ -19,7 +33,7 @@ class playerClass {
         this.playerDOM.style.top = this.y + 'px'
         this.playerDOM.style.left = this.x + 'px'
         this.playerDOM.style.backgroundColor = this.color;
-        document.getElementById("container").appendChild(this.playerDOM)
+        document.getElementsByClassName("container")[0].appendChild(this.playerDOM)
     }
 
     createPic() {
@@ -29,7 +43,7 @@ class playerClass {
         this.picDOM.style.height = 100 + '%'
         this.picDOM.style.zIndex = 2
         this.picDOM.style.background = "url('Images/youlose.png')"
-        document.getElementById("container").appendChild(this.picDOM)
+        document.getElementsByClassName("container")[0].appendChild(this.picDOM)
     }
 
     movePlayer(pressed) {
@@ -75,37 +89,18 @@ class playerClass {
 
     wallHit(){
 
-        const VwallArray = [obstacleV1,obstacleV2,obstacleV3,obstacleV4,obstacleV5,obstacleV6,
+        const wallArray = [obstacleV1,obstacleV2,obstacleV3,obstacleV4,obstacleV5,obstacleV6,
             obstacleV7,obstacleV8,obstacleV9,obstacleV10,obstacleV11,obstacleV12,obstacleV13,obstacleV14,obstacleV15,obstacleV16,
-            obstacleV17,obstacleV18,obstacleV19,obstacleV20,obstacleV21,obstacleV22,obstacleV23,start1,start2,start3]
-        
-        const HwallArray = [obstacleH1,obstacleH2,obstacleH3,obstacleH4,obstacleH5,obstacleH6,
-            obstacleH7,obstacleH8,obstacleH9,obstacleH10,obstacleH11,start4,start5]
+            obstacleV17,obstacleV18,obstacleV19,obstacleV20,obstacleV21,obstacleV22,obstacleV23,start1,start2,start3,
+            obstacleH1,obstacleH2,obstacleH3,obstacleH4,obstacleH5,obstacleH6,obstacleH7,obstacleH8,obstacleH9,obstacleH10,obstacleH11,start4,start5]
 
-        //VerticalWall
-        for (let i = 0; i < VwallArray.length; i++) {
-            let VwallHeightInt = parseInt(VwallArray[i].wallHeight)
-            let VwallYInt = parseInt(VwallArray[i].wallY)
-            let VwallWidthInt = parseInt(VwallArray[i].wallWidth)
-            let VwallXInt = parseInt(VwallArray[i].wallX)
-            if (this.x >= VwallXInt - 7.5 && this.x <= VwallXInt + VwallWidthInt + 7.5 &&
-                this.y >= VwallYInt - 7.5 && this.y <= VwallYInt + VwallHeightInt + 7.5) {
-                    this.y = 635
-                    this.playerDOM.style.top = this.y + 'px';
-                    this.x = 1100
-                    this.playerDOM.style.left = this.x + 'px';
-                    player.createPic()
-            }
-        }
-
-        //HorizontalWall
-        for (let i = 0; i < HwallArray.length; i++) {
-            let HwallHeightInt = parseInt(HwallArray[i].wallHeight)
-            let HwallYInt = parseInt(HwallArray[i].wallY)
-            let HwallWidthInt = parseInt(HwallArray[i].wallWidth)
-            let HwallXInt = parseInt(HwallArray[i].wallX)
-            if (this.x >= HwallXInt - 7.5 && this.x <= HwallXInt + HwallWidthInt + 7.5 &&
-                this.y >= HwallYInt - 7.5 && this.y <= HwallYInt + HwallHeightInt + 7.5) {
+        for (let i = 0; i < wallArray.length; i++) {
+            let wallHeightInt = parseInt(wallArray[i].wallHeight)
+            let wallYInt = parseInt(wallArray[i].wallY)
+            let wallWidthInt = parseInt(wallArray[i].wallWidth)
+            let wallXInt = parseInt(wallArray[i].wallX)
+            if (this.x >= wallXInt - 7.5 && this.x <= wallXInt + wallWidthInt + 7.5 &&
+                this.y >= wallYInt - 7.5 && this.y <= wallYInt + wallHeightInt + 7.5) {
                     this.y = 635
                     this.playerDOM.style.top = this.y + 'px';
                     this.x = 1100
@@ -147,7 +142,7 @@ class wallClass {
         wallDOM.style.height = this.wallHeight + 'px'
         wallDOM.style.top = this.wallY + 'px'
         wallDOM.style.left = this.wallX + 'px'
-        document.getElementById("container").appendChild(wallDOM)
+        document.getElementsByClassName("container")[0].appendChild(wallDOM)
     }
 }
 
@@ -168,7 +163,7 @@ class goalClass {
         goalDOM.style.height = this.goalHeight + 'px'
         goalDOM.style.top = this.goalY + 'px'
         goalDOM.style.left = this.goalX + 'px'
-        document.getElementById("container").appendChild(goalDOM)
+        document.getElementsByClassName("container")[0].appendChild(goalDOM)
     }
 
     createWinPic() {
@@ -178,10 +173,12 @@ class goalClass {
         this.winPicDom.style.height = 100 + '%'
         this.winPicDom.style.zIndex = 3
         this.winPicDom.style.background = "url('Images/youwin.png')"
-        document.getElementById("container").appendChild(this.winPicDom)
+        document.getElementsByClassName("container")[0].appendChild(this.winPicDom)
     }
 }
 
+const container = new containerClass()
+//player
 const player = new playerClass(20, 20, 'red', 1100, 635)
 //Start Box
 const start1 = new wallClass(550, 1175, 15, 150)
