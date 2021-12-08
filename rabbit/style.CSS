@@ -1,0 +1,161 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    height: 100vh;
+    width: 100vw;
+    
+    background: linear-gradient(to top, rgb(32, 88, 32),rgb(74, 201, 74));
+
+    overflow: hidden;
+}
+
+#grid_container{
+    position: absolute;
+    left: 25%;
+
+    width: 50vw;
+    height: 100vh;
+
+    display: grid;
+    grid-template-columns: repeat(5, 20%);
+    grid-template-rows: repeat(5, 20%);
+}
+
+.grid_item{
+    position: relative;
+}
+
+.grid_item_black{
+    background-color: black;
+}
+
+.grid_item_white{
+    background-color: white;
+}
+
+#start{
+    position: absolute;
+
+    left: 10%;
+    top: 50%;
+
+    background-color: transparent;
+    border: transparent;
+
+    cursor: pointer;
+
+    font-size: xx-large;
+
+    color: greenyellow;
+}
+
+#stop{
+    position: absolute;
+
+    left: 85%;
+    top: 50%;
+
+    background-color: transparent;
+    border: transparent;
+
+    cursor: pointer;
+
+    font-size: xx-large;
+
+    color: red;
+}
+
+#finishLine_container{
+    position: absolute;
+    left: 25%;
+
+    width: 50vw;
+    height: 100vh;
+}
+
+#finishLine{
+    position: relative;
+
+    top: 150px;
+
+    width: 100%;
+    height: 10px;
+
+    background-color: rgba(255, 0, 0, 0.5);
+}
+
+/* Rabbit */
+
+
+.rabbit_container{
+    position: absolute;
+
+    transition: ease 0.25s;
+}
+
+.rabbit_body{
+    position: relative;
+
+    top: 75px;
+    
+    height: 100px;
+    width: 75px;
+
+    border-radius: 100%;
+}
+
+.rabbit_head{
+    position: relative;
+
+    top: -55px;
+    left: 38px;
+
+    transform: translate(-50%,0);
+
+    height: 50px;
+    width: 50px;
+
+    border-radius: 100%;
+}
+
+.rabbit_ears_left{
+    position: relative;
+
+    top: -40px;
+
+    height: 60px;
+    width: 20px;
+
+    transform: rotateZ(-5deg);
+
+    border-radius: 100%;
+}
+
+.rabbit_ears_right{
+    position: relative;
+
+    top: -100px;
+    left: 30px;
+
+    height: 60px;
+    width: 20px;
+
+    transform: rotateZ(5deg);
+
+    border-radius: 100%;
+}
+
+.rabbit_tail{
+    position: relative;
+
+    left: 18px;
+
+    height: 40px;
+    width: 40px;
+
+    border-radius: 100%;
+}
+
